@@ -10,6 +10,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 /**
  * Created by LaunchCode
@@ -42,6 +44,7 @@ public class JobData {
                 values.add(aValue);
             }
         }
+
 
         return values;
     }
@@ -83,6 +86,34 @@ public class JobData {
 
         return jobs;
     }
+
+//TODO findByValue
+public static ArrayList<HashMap<String, String>> findByValue(String value) {
+
+    // load data, if not already loaded
+    loadData();
+
+    ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+    for (HashMap<String, String> row : allJobs) {
+
+        for (Map.Entry<String, String> column : row.entrySet()) {
+
+            String k = column.getKey();
+            String v = column.getValue();
+
+            k = k.toLowerCase();
+            v = v.toLowerCase();
+
+            if (v.contains(value) || k.contains(value)) {
+                jobs.add(row);
+
+            }
+        }
+    }
+    return jobs;
+
+}
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -126,3 +157,5 @@ public class JobData {
     }
 
 }
+
+//get the first > compare as lowercase > if not matching, still display > if true, don't add to the list
