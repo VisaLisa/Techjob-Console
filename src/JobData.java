@@ -102,6 +102,7 @@ public static ArrayList<HashMap<String, String>> findByValue(String value) {
             String k = column.getKey();
             String v = column.getValue();
 
+            value = value.toLowerCase();
             k = k.toLowerCase();
             v = v.toLowerCase();
 

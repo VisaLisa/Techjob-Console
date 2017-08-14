@@ -64,7 +64,7 @@ public class TechJobs {
                     printJobs(org.launchcode.techjobs.console.JobData.findByValue(searchTerm));
 
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    printJobs(org.launchcode.techjobs.console.JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
         }
